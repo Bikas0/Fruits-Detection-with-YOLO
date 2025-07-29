@@ -1,0 +1,10 @@
+# Python 3.10.18
+ultralytics==8.3.158
+opencv-python==4.11.0.86
+numpy==1.26.4
+paddlepaddle-gpu==2.6.2
+paddleocr==2.9.1
+fastapi==0.115.13
+uvicorn==0.34.3
+python-multipart
+requests

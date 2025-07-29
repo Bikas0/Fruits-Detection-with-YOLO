@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  backend:
+    container_name: nid
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8000"
+    volumes:
+      - ./backend:/app
+    working_dir: /app
+    restart: unless-stopped
+    networks:
+      - app_network
+    devices:
+      - "/dev/video0:/dev/video0"
+    privileged: true
+
+  frontend:
+    container_name: static-web
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
